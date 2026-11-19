@@ -22,7 +22,7 @@ The final output is a **one-page Power BI summary** that the CCO can click throu
 
 ## 📸 Dashboard Preview
 *(Insert your screenshot here using: `![Summary Page](01_PowerBI_Dashboard/Kilele_Dashboard_Screenshot_Summary.png)`)*
-
+https://app.powerbi.com/groups/me/reports/6fa31d87-5fcb-48a6-bcc3-efdcdb4955cf/3f08dea64ca1140c2a26?experience=power-bi
 ## 📂 How to navigate this repository
 *   `01_PowerBI_Dashboard`: Contains the `.pbix` file and screenshots.
 *   `02_Excel_Audits`: Contains the finance-ready workbook.
