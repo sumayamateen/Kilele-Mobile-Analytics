@@ -1,30 +1,59 @@
-# 📱 Kilele Mobile: Turning Data into Board-Level Strategy
+📱 Kilele Mobile: Data Analytics & Board-Level Strategy
+📌 Project Overview
+Kilele Mobile is Kenya's second-largest telecom operator (~11M subscribers). The Chief Commercial Officer (CCO) needed to present the true state of the business to the Board of Directors. She had five critical questions spanning subscriber growth, product profitability, agent liquidity, network capacity, and marketing ROI.
 
-## 📌 Project Overview
-Kilele Mobile is Kenya's second-largest telecom operator. The Chief Commercial Officer (CCO) needed to present the state of the business to the Board of Directors. She had five critical questions across subscriber growth, product profitability, agent liquidity, network capacity, and marketing ROI.
+My Role: Lead Data Analyst. I extracted raw data using SQL, built finance-auditable Excel models, designed a 6-page interactive Power BI Board Pack, and wrote the executive findings to present to C-level stakeholders.
 
-**My Role:** Lead Data Analyst. I was responsible for extracting the data using SQL, auditing the logic in Excel for Finance, building the interactive Power BI board pack, and writing the executive findings.
+🔍 The Five Business Problems Solved
+The Ghost Subscribers (Data Quality): Discovered that 7.6% of "active" subscribers were artificially inflated by free 1 KES promo credits. I built a logic to exclude these ghosts and corrected the board's active base from 33,235 down to the true 30,709.
 
-## 🔍 The Five Business Problems Solved
-1. **The Ghost Subscribers:** Discovered that 7.6% of "active" subscribers were inflated by free 1 KES promo credits. Corrected the board number from 33,235 to 30,709.
-2. **The Usiku Cannibalization:** Proved that the new night-time data bundles were eating daytime revenue, causing a 33% drop in adopter revenue.
-3. **The Coast Float Crisis:** Traced 3.5M KES in failed withdrawals to a structural system cap (agents limited to 30K float), exonerating the agent network.
-4. **The Kisumu Network Crisis:** Exposed how the regional average (86.9%) hid a localized crisis where 24/24 towers in Kisumu were running at 99.5% capacity, driving 30% silent churn.
-5. **The Campaign Illusion:** Exposed that the "8.5% reactivation" win-back campaign had a true statistical lift of 0.01% (pure noise) by comparing it to the holdout group.
+The Usiku Cannibalization (Product Analytics): The new night-time data bundles were eating daytime revenue. By comparing "Adopters" vs "Non-Adopters," I proved that adopter revenue dropped by 33% (from 1,048 KES to 700 KES) despite data usage going up.
 
-## 🛠️ Tools & Techniques Used
-*   **SQL (PostgreSQL):** Extracted, cleaned, and aggregated data using CTEs, Window Functions, and complex JOINs.
-*   **Power BI:** Built a 6-page interactive dashboard using DAX measures, star-schema modeling, dynamic titles, and executive UI/UX design.
-*   **Excel:** Built a finance-auditable workbook using PivotTables, `SUMIFS`, `COUNTIFS`, `XLOOKUP`, and statistical significance testing (Standard Error).
+The Coast Float Crisis (Operations/Liquidity): Traced 3.5M KES in failed KilelePay withdrawals to a structural system cap (Coast agents were limited to 30K float limits vs. 95K nationally). This proved the failures were a system issue, exonerating the agent network.
 
-## 🚀 The Final Deliverable
-The final output is a **one-page Power BI summary** that the CCO can click through during the board meeting, backed by a live Excel workbook and SQL scripts for the Finance team to audit.
+The Kisumu Network Crisis (Network Planning): Exposed how the Nyanza regional average (86.9%) hid a localized crisis. 100% of the 24 live towers in Kisumu were running at 99.5% capacity, driving a 30% silent churn rate.
 
-## 📸 Dashboard Preview
-*(Insert your screenshot here using: `![Summary Page](01_PowerBI_Dashboard/Kilele_Dashboard_Screenshot_Summary.png)`)*
-https://app.powerbi.com/groups/me/reports/6fa31d87-5fcb-48a6-bcc3-efdcdb4955cf/3f08dea64ca1140c2a26?experience=power-bi
-## 📂 How to navigate this repository
-*   `01_PowerBI_Dashboard`: Contains the `.pbix` file and screenshots.
-*   `02_Excel_Audits`: Contains the finance-ready workbook.
-*   `03_SQL_Code`: Contains the raw SQL queries used for data extraction.
-*   `04_Executive_Summary`: Contains the final email sent to the CCO.
+The Campaign Illusion (Marketing ROI): Exposed that the "8.5% reactivation" win-back campaign had a true statistical lift of 0.01% (pure noise). I used Standard Error calculations to prove the campaign had zero real effect compared to the holdout group.
+
+🛠️ Technical Toolkit & Techniques
+1. SQL (PostgreSQL) & Data Extraction
+CTEs (Common Table Expressions): Used to break down complex logic (like identifying 90-day usage windows and isolating targeted campaigns) into readable, modular blocks.
+
+Window Functions: Utilized ROW_NUMBER() and LAG() to track customer behaviors over time (e.g., identifying the first purchase of a night bundle).
+
+Complex JOINs & Aggregations: Joined data across 10+ tables (subscribers, recharges, kilelepay_transactions, site_daily, campaign_targets) using LEFT JOIN, INNER JOIN, and conditional CASE WHEN logic.
+
+2. Power BI (Executive Dashboarding)
+DAX (Data Analysis Expressions): Built complex measures using CALCULATE, FILTER, TREATAS, and VAR to compute dynamic metrics (e.g., Active Base, Revenue Drop, Statistical Lift).
+
+Star Schema Modeling: Designed a clean data model, connecting fact tables to a centralized dim_date table to ensure accurate time-intelligence.
+
+Executive UI/UX Design: Built a 6-page report with a seamless custom navigation bar, dynamic titles, conditional formatting (red flags for gaps), and "Bottom Line Up Front" (BLUF) captions for the Board.
+
+3. Excel (Finance & Audit)
+Audit-Ready Formulas: Used INDEX/MATCH, XLOOKUP, SUMIFS, and COUNTIFS to create a live workbook where every summary number traces back to a raw data sheet without hardcoded values.
+
+Statistical Testing: Calculated the Standard Error of the difference between two proportions to prove that a campaign's lift was statistically insignificant.
+
+PivotTables: Built clean, dynamic PivotTables to aggregate millions of rows of transaction data into board-ready summaries.
+
+🚀 The Final Deliverable
+The Power BI Board Pack: A 6-page interactive summary that the CCO can click through during the board meeting. (Note: Since the data source is a local simulation, the .pbix file is provided in this repo. A PDF export of the dashboard is also available for easy viewing).
+
+The Excel Audit Pack: A multi-sheet workbook designed for the Finance team. Every formula is live, and every number on the Summary tab links directly to a working sheet.
+
+The SQL Pack: The raw queries used to build the extracts.
+
+📸 Dashboard Preview
+(Recruiters: Click the image below to view the full dashboard PDF)
+
+https://01_powerbi_dashboard/Kilele_Dashboard_Screenshot_Summary.png
+
+📂 Repository Structure
+01_PowerBI_Dashboard/: The .pbix file, screenshots, and PDF export.
+
+02_Excel_Audits/: The final finance-ready audit workbook (.xlsx).
+
+03_SQL_Code/: The raw PostgreSQL queries for all five findings.
+
+04_Executive_Summary/: The final written findings and C-level email.
