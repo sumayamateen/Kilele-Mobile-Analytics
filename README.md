@@ -2,6 +2,8 @@
 
 > **"The Second Place Problem: Five Corrections for the Board."**
 
+🔗 **[Click here to view the Live Interactive Power BI Dashboard](https://app.powerbi.com/groups/me/reports/6fa31d87-5fcb-48a6-bcc3-efdcdb4955cf/3f08dea64ca1140c2a26?experience=power-bi)**
+
 ## 📌 Project Overview
 **Kilele Mobile** is a simulated Kenyan telecom operator (~11M subscribers). The Chief Commercial Officer (CCO) needed to present the true state of the business to the Board of Directors. She had five critical questions spanning subscriber growth, product profitability, agent liquidity, network capacity, and marketing ROI.
 
@@ -47,28 +49,17 @@
 
 > *Click the image below to view the full Board Pack.*
 
-![Kilele Mobile Dashboard Summary](01_PowerBI_Dashboard/Kilele_Dashboard_Screenshot_Summary.png)
+![Kilele Mobile Dashboard Summary](Power%20BI%20Dashboard/06_Board_Pack_Summary.png)
+
+*(A full PDF export is also available in the Power BI Dashboard folder).*
 
 ---
 
+## 📂 Repository Structure
 
+- 📁 **`Excel Audits`**: Contains the finance-ready audit workbooks (`.xlsx`) for all 5 episodes, plus the final consolidated Board Pack audit.
+- 📁 **`Power BI Dashboard`**: Contains the screenshots for each dashboard page, the final PDF export, and the link to the live report.
+- 📁 **`SQL Codes`**: Contains the raw PostgreSQL queries used to extract and analyze the data for each finding.
 
 ---
-
-<details>
-<summary><b>🛠️ Click here to view the core SQL syntax used (Sample)</b></summary>
-
-```sql
--- Example: Finding the 'Ghost Subscribers' (Episode 1)
-WITH ActiveBase AS (
-    SELECT 
-        status, 
-        last_revenue_event_on, 
-        last_usage_on
-    FROM kilele.subscribers
-    WHERE status = 'active'
-)
-SELECT 
-    COUNT(*) AS reported_active,
-    COUNT(*) FILTER (WHERE last_revenue_event_on >= '2026-04-01') AS true_active
-FROM ActiveBase;
+**Disclaimer:** This project uses simulated data provided by the DataSimHQ analytics sandbox. All customer names and MSISDNs are fictional.
